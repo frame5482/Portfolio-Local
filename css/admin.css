@@ -569,3 +569,83 @@
   }
 }
 
+
+/* ============================================================
+   Workspace bar — folder connection + save (static editor)
+   ============================================================ */
+.workspace-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+  margin-bottom: 1.8rem;
+}
+
+.workspace-status {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  min-width: 240px;
+  flex: 1;
+}
+
+.workspace-status strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.workspace-status p {
+  margin: 0.15rem 0 0;
+  font-size: 0.82rem;
+  color: var(--text-light);
+}
+
+.workspace-dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #d8d3e0;
+  box-shadow: 0 0 0 4px rgba(197, 163, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.workspace-dot.connected {
+  background: #57c98a;
+  box-shadow: 0 0 0 4px rgba(87, 201, 138, 0.2);
+}
+
+.workspace-dot.dirty {
+  background: #ffb74d;
+  box-shadow: 0 0 0 4px rgba(255, 183, 77, 0.25);
+  animation: workspacePulse 1.6s ease-in-out infinite;
+}
+
+@keyframes workspacePulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(255, 183, 77, 0.25); }
+  50%      { box-shadow: 0 0 0 8px rgba(255, 183, 77, 0.08); }
+}
+
+.workspace-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.workspace-actions .btn[disabled] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.pending-badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  background: var(--lavender, #c5a3ff);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 600;
+}

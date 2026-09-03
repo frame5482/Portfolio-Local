@@ -1,11 +1,5 @@
-node_modules/
-.env
-
-# Legacy stores from the older SQLite / local-upload version
-/data/
-/uploads/
-
-# Temp files written by the JSON store
-public/data/*.tmp
+# Local-only leftovers from the old server version (not part of the site)
+_legacy-backup/
 
 .DS_Store
+Thumbs.db

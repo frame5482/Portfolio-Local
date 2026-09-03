@@ -56,35 +56,28 @@
     <div class="admin-container">
 
       <div class="admin-header">
-        <h1 data-i18n="admin_header">🔐 Admin Panel</h1>
-        <p data-i18n="admin_sub">Manage your works</p>
+        <h1>🛠 Portfolio Editor</h1>
+        <p>แก้ไขผลงาน แล้วบันทึกลง <code>data/works.json</code> + <code>images/</code> โดยตรง</p>
       </div>
 
-      <!-- Logout topbar -->
-      <div class="admin-topbar" id="adminTopbar">
-        <button class="btn btn-secondary btn-sm" id="logoutBtn" data-i18n="btn_logout">🚪 Logout</button>
-      </div>
-
-      <!-- Login Section -->
-      <div class="login-section glass-card" id="loginSection">
-        <span class="login-icon">🔑</span>
-        <h2 data-i18n="login_title">Login</h2>
-        <p data-i18n="login_sub">Enter password to manage works</p>
-        <div id="offlineNotice" style="display:none; margin:0 0 1rem; padding:0.9rem 1rem; border-radius:12px; background:rgba(255,184,168,0.25); border:1px solid rgba(255,120,90,0.35); font-size:0.9rem; line-height:1.6; text-align:left;">
-          <strong>⚠️ Admin needs the local server.</strong><br>
-          This page is a static copy, so uploading is disabled here.<br>
-          Run <code>npm start</code> on your computer and open
-          <code>http://localhost:3000/admin.html</code> to manage works,
-          then commit and push the changes.
+      <!-- Workspace bar — this page edits the JSON files directly, no server -->
+      <div class="workspace-bar glass-card" id="workspaceBar">
+        <div class="workspace-status">
+          <span class="workspace-dot" id="workspaceDot"></span>
+          <div>
+            <strong id="workspaceTitle">ยังไม่ได้เชื่อมโฟลเดอร์</strong>
+            <p id="workspaceHint">เชื่อมโฟลเดอร์เว็บของคุณเพื่อให้บันทึกลงไฟล์ได้เลย</p>
+          </div>
         </div>
-        <form class="login-form" id="loginForm">
-          <input type="password" id="passwordInput" placeholder="Password..." required autocomplete="current-password" data-i18n="placeholder_pass">
-          <button type="submit" class="btn btn-primary" data-i18n="btn_login">🔓 Login</button>
-        </form>
+        <div class="workspace-actions">
+          <button class="btn btn-secondary btn-sm" id="connectFolderBtn">📂 เชื่อมโฟลเดอร์</button>
+          <button class="btn btn-primary btn-sm" id="saveBtn" disabled>💾 บันทึก</button>
+          <button class="btn btn-secondary btn-sm" id="exportBtn">⬇️ ดาวน์โหลดไฟล์</button>
+        </div>
       </div>
 
       <!-- Upload Section -->
-      <div class="upload-section" id="uploadSection">
+      <div class="upload-section visible" id="uploadSection">
         <div class="upload-card glass-card">
           <h2 data-i18n="upload_title">📤 Upload New Work</h2>
           <form id="uploadForm">
@@ -195,7 +188,7 @@
       </div>
 
       <!-- Tag Manager -->
-      <div class="works-list-section" id="tagManagerSection">
+      <div class="works-list-section visible" id="tagManagerSection">
         <div class="tag-manager-card glass-card">
           <div class="tag-manager-header">
             <h2>🏷️ Tag Manager</h2>
@@ -210,7 +203,7 @@
       </div>
 
       <!-- Existing Works -->
-      <div class="works-list-section" id="worksListSection">
+      <div class="works-list-section visible" id="worksListSection">
         <h2 data-i18n="all_works_title">📋 All Works</h2>
         <div id="worksList"></div>
       </div>
