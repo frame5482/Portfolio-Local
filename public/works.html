@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Amonphan Jamratsri — Work ✨</title>
+  <meta name="description"
+    content="Browse the creative portfolio — illustrations, character designs, UI designs, and more.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/works.css">
+  <script src="js/i18n.js"></script>
+</head>
+
+<body>
+
+  <div class="bg-decorations">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">🎨</span>
+      <div class="logo-text">
+        <span>Amonphan Jamratsri</span>
+        <span class="logo-sub">IframeXeno</span>
+      </div>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="th" onclick="setLanguage('th')">TH</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="jp" onclick="setLanguage('jp')">JP</button>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav_home">✦ Home</a></li>
+        <li><a href="works.html" class="active" data-i18n="nav_works">🖼 Works</a></li>
+        <li><a href="admin.html" data-i18n="nav_admin"> Admin </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <div class="works-header">
+      <h1 data-i18n="works_header">🖼 My Works</h1>
+      <p data-i18n="works_sub">A collection of my artworks, illustrations, and designs.</p>
+    </div>
+
+    <!-- Tag Filters -->
+    <div class="tag-filters" id="tagFilters">
+      <button class="tag-btn active" data-tag="all" data-i18n="tag_all">✦ All</button>
+    </div>
+
+    <!-- Works Grid -->
+    <div class="works-grid" id="worksGrid">
+      <div class="spinner" id="loadingSpinner"></div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState" style="display:none;">
+      <div class="emoji">🎨</div>
+      <p data-i18n="empty_works">No works found... check back soon!</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p data-i18n="footer_text">Made with 💜 by Amonphan Jamratsri · © 2026</p>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/data-source.js"></script>
+  <script src="js/works.js"></script>
+</body>
+
+</html>

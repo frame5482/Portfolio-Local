@@ -1,0 +1,38 @@
+[
+  {
+    "id": "69f8c47cb29fe36e48e429ed",
+    "name": "Model",
+    "order": 0,
+    "is_highlighted": true
+  },
+  {
+    "id": "69f8c47db29fe36e48e429f0",
+    "name": "Animation",
+    "order": 1,
+    "is_highlighted": false
+  },
+  {
+    "id": "69f8c47cb29fe36e48e429ee",
+    "name": "Character Design",
+    "order": 2,
+    "is_highlighted": false
+  },
+  {
+    "id": "69f8c47db29fe36e48e429f1",
+    "name": "Illustrator",
+    "order": 3,
+    "is_highlighted": false
+  },
+  {
+    "id": "69f8c47cb29fe36e48e429ef",
+    "name": "VFX",
+    "order": 4,
+    "is_highlighted": false
+  },
+  {
+    "id": "69f8d0deb29fe36e48e42a19",
+    "name": "Game",
+    "order": 999,
+    "is_highlighted": false
+  }
+]

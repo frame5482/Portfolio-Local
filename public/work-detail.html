@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amonphan Jamratsri — Work Detail ✨</title>
+  <meta name="description" content="View detailed information about this creative work.">
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🖼</text></svg>">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/work-detail.css">
+  <script src="js/i18n.js"></script>
+</head>
+
+<body>
+
+  <div class="bg-decorations">
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="nav" id="mainNav">
+    <a href="index.html" class="nav-logo">
+      <span class="logo-icon">🎨</span>
+      <div class="logo-text">
+        <span>Amonphan Jamratsri</span>
+        <span class="logo-sub">IframeXeno</span>
+      </div>
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <div style="display: flex; align-items: center;">
+      <div class="lang-switcher">
+        <button class="lang-btn" data-lang="th" onclick="setLanguage('th')">TH</button>
+        <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="jp" onclick="setLanguage('jp')">JP</button>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" data-i18n="nav_home">✦ Home</a></li>
+        <li><a href="works.html" class="active" data-i18n="nav_works">🖼 Works</a></li>
+        <li><a href="admin.html" data-i18n="nav_admin"> Admin </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="page-content">
+    <!-- Loading State -->
+    <div class="detail-loading" id="detailLoading">
+      <div class="spinner"></div>
+      <p data-i18n="loading_detail">Loading work details...</p>
+    </div>
+
+    <!-- Error State -->
+    <div class="detail-error" id="detailError" style="display:none;">
+      <div class="emoji">😢</div>
+      <h2 data-i18n="error_not_found">Work Not Found</h2>
+      <p data-i18n="error_sub">The work you are looking for may have been deleted or the URL is incorrect.</p>
+      <a href="works.html" class="btn btn-primary" style="margin-top:1rem;" data-i18n="btn_back_works">🖼 Back to Works</a>
+    </div>
+
+    <!-- Detail Content -->
+    <div class="detail-container" id="detailContainer" style="display:none;">
+      <!-- Breadcrumb -->
+      <div class="breadcrumb" id="breadcrumb">
+        <a href="works.html" data-i18n="breadcrumb_works">🖼 Works</a>
+        <span class="breadcrumb-sep">›</span>
+        <span class="breadcrumb-current" id="breadcrumbTitle">—</span>
+      </div>
+
+      <div class="detail-layout">
+        <!-- Left: Media Gallery -->
+        <div class="detail-media-col">
+          <!-- Main display -->
+          <div class="gallery-main" id="galleryMain">
+            <button class="gallery-main-nav prev" id="mainPrev">‹</button>
+            <button class="gallery-main-nav next" id="mainNext">›</button>
+            <img src="" alt="" id="galleryMainImg">
+            <iframe id="galleryMainVideo" class="gallery-main-video" style="display:none;"
+              frameborder="0" allowfullscreen
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+            </iframe>
+            <button class="gallery-fullscreen-btn" id="fullscreenBtn" title="View Fullscreen">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Thumbnail strip -->
+          <div class="gallery-thumbs-wrapper">
+            <button class="gallery-thumb-nav gallery-thumb-prev" id="thumbPrev" aria-label="Previous">‹</button>
+            <div class="gallery-thumbs" id="galleryThumbs">
+              <!-- Thumbnails injected here -->
+            </div>
+            <button class="gallery-thumb-nav gallery-thumb-next" id="thumbNext" aria-label="Next">›</button>
+          </div>
+        </div>
+
+        <!-- Right: Info Panel -->
+        <div class="detail-info-col">
+          <div class="detail-info-card glass-card">
+            <!-- Cover thumbnail -->
+            <div class="info-cover" id="infoCover">
+              <img src="" alt="" id="infoCoverImg">
+            </div>
+
+            <!-- Description -->
+            <div class="info-body">
+              <h1 class="detail-title" id="detailTitle">—</h1>
+              <div class="detail-description" id="detailDesc"></div>
+
+              <!-- Meta info table -->
+              <div class="detail-meta">
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta_date">📅 Published Date:</span>
+                  <span class="meta-value" id="detailDate">—</span>
+                </div>
+                <div class="meta-row" id="videoRow" style="display:none;">
+                  <span class="meta-label" data-i18n="meta_video">🎬 Video:</span>
+                  <span class="meta-value"><a href="#" id="detailVideoLink" target="_blank" data-i18n="view_youtube">View on YouTube</a></span>
+                </div>
+                <div class="meta-row">
+                  <span class="meta-label" data-i18n="meta_img_count">🖼️ Images count:</span>
+                  <span class="meta-value" id="detailImgCount">—</span>
+                </div>
+              </div>
+
+              <!-- Tags -->
+              <div class="detail-tags-section">
+                <div class="tags-label" data-i18n="label_tags">Tags for this work:</div>
+                <div class="detail-tags" id="detailTags"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full Description Section (below) -->
+      <div class="detail-full-desc glass-card" id="detailFullDesc" style="display:none;">
+        <h2 data-i18n="label_more_details">📝 More details</h2>
+        <div class="full-desc-content" id="fullDescContent"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Fullscreen Lightbox -->
+  <div class="fullscreen-overlay" id="fullscreenOverlay">
+    <button class="fullscreen-close" id="fullscreenClose">✕</button>
+    <button class="fullscreen-nav fullscreen-prev" id="fullscreenPrev">‹</button>
+    <button class="fullscreen-nav fullscreen-next" id="fullscreenNext">›</button>
+    <div class="fullscreen-img-container">
+      <img src="" alt="" id="fullscreenImg">
+    </div>
+    <div class="fullscreen-counter" id="fullscreenCounter">1 / 1</div>
+  </div>
+
+  <footer class="footer">
+    <p data-i18n="footer_text">Made with 💜 by Amonphan Jamratsri · © 2026</p>
+  </footer>
+
+  <div class="toast-container" id="toastContainer"></div>
+  <script src="js/data-source.js"></script>
+  <script src="js/work-detail.js"></script>
+</body>
+
+</html>

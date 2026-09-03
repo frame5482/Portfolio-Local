@@ -1,0 +1,224 @@
+/* Works / Portfolio Page Styles */
+
+.works-header { text-align: center; padding: 2rem 2rem 1rem; }
+.works-header h1 {
+  font-size: 2.2rem; font-weight: 800;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.works-header p { color: var(--text-light); margin-top: 0.5rem; }
+
+/* Tag Filters */
+.tag-filters {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center; padding: 1rem 2rem 2rem;
+  max-width: 800px; margin: 0 auto;
+}
+
+.tag-btn {
+  padding: 0.45rem 1.2rem; border-radius: var(--radius-full);
+  font-family: var(--font-heading); font-weight: 500; font-size: 0.85rem;
+  background: var(--surface); border: 2px solid var(--border);
+  color: var(--text-light); transition: all 0.3s var(--ease-bounce);
+  cursor: pointer;
+}
+
+.tag-btn:hover {
+  border-color: var(--lavender); color: var(--text);
+  transform: translateY(-2px);
+}
+
+.tag-btn.active {
+  background: var(--gradient-btn); background-size: 200% 200%;
+  animation: gradientBtnShift 4s ease infinite;
+  color: white; border-color: transparent;
+  box-shadow: 0 4px 15px rgba(197,163,255,0.3);
+  transform: translateY(-2px);
+}
+
+/* Grid Layout */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  padding: 0 2rem 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.work-card {
+  break-inside: avoid; margin-bottom: 1.2rem;
+  border-radius: var(--radius-lg); overflow: hidden;
+  background: var(--glass-bg); backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
+  transition: all 0.4s var(--ease-bounce);
+  cursor: pointer; opacity: 0; animation: cardFadeIn 0.5s ease forwards;
+}
+
+.work-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(157,111,219,0.2);
+}
+
+.work-card.hidden {
+  display: none;
+}
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.work-card .card-media {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--bg-alt);
+}
+
+.work-card .card-media img {
+  width: 100%; 
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease-smooth);
+}
+
+.work-card:hover .card-media img { transform: scale(1.05); }
+
+.video-badge {
+  position: absolute;
+  bottom: 0.6rem; right: 0.6rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: rgba(0,0,0,0.7);
+  color: white;
+  font-size: 0.72rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; gap: 0.3rem;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.img-count-badge {
+  position: absolute;
+  bottom: 0.6rem; left: 0.6rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  background: rgba(0,0,0,0.65);
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-family: var(--font-heading);
+  backdrop-filter: blur(4px);
+  display: flex; align-items: center; gap: 0.25rem;
+  pointer-events: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+
+.work-card .card-body { padding: 1rem 1.2rem 1.2rem; }
+
+.work-card .card-title {
+  font-family: var(--font-heading); font-weight: 700;
+  font-size: 1rem; margin-bottom: 0.3rem; color: var(--text);
+}
+
+.work-card .card-desc {
+  font-size: 0.82rem; color: var(--text-light); line-height: 1.5;
+  margin-bottom: 0.6rem;
+  display: -webkit-box; -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+
+.work-card .card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+.work-card .card-tag {
+  padding: 0.2rem 0.6rem; border-radius: var(--radius-full);
+  font-size: 0.7rem; font-weight: 500;
+  background: var(--lavender-light); color: var(--lavender-dark);
+}
+
+.work-card .card-tag:nth-child(2) { background: var(--mint-light); color: var(--mint-dark); }
+.work-card .card-tag:nth-child(3) { background: var(--peach-light); color: var(--peach-dark); }
+
+@media (max-width: 900px) { 
+  .works-grid { grid-template-columns: repeat(2, 1fr); } 
+}
+@media (max-width: 550px) {
+  .works-grid { 
+    grid-template-columns: 1fr; 
+    padding: 0 1rem 2rem; 
+  }
+  .works-header h1 { font-size: 1.6rem; }
+}
+
+.star-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 1.8rem;
+  animation: starPulse 3s ease-in-out infinite;
+  z-index: 10;
+  pointer-events: none;
+}
+
+@keyframes starPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.recommended-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.5);
+  color: #d4af37;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 4px;
+  margin-left: 8px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================================
+   Highlighted Tag Styles
+   ============================================================ */
+
+/* Highlighted tag filter button — subtle soft gold, doesn't change base look */
+.tag-btn.tag-btn-highlighted {
+  border-color: rgba(218, 175, 55, 0.45);
+  box-shadow: 0 1px 8px rgba(255, 215, 0, 0.12);
+  background: rgba(255, 248, 225, 0.55);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.tag-btn.tag-btn-highlighted:hover {
+  border-color: rgba(218, 175, 55, 0.6);
+  box-shadow: 0 3px 14px rgba(255, 215, 0, 0.18);
+  transform: translateY(-2px);
+}
+
+.tag-btn.tag-btn-highlighted.active {
+  background: var(--gradient-btn);
+  background-size: 200% 200%;
+  animation: gradientBtnShift 4s ease infinite;
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 4px 15px rgba(197,163,255,0.3), 0 0 8px rgba(255, 215, 0, 0.15);
+}
+
+/* Highlighted card tag — soft cream-gold, overrides nth-child colors */
+.work-card .card-tags .card-tag.card-tag-highlighted {
+  background: rgba(255, 248, 225, 0.7);
+  color: #a07830;
+  border: 1px solid rgba(218, 175, 55, 0.3);
+  font-weight: 600;
+}
